@@ -1,16 +1,26 @@
-import React from 'react';
-import './App.css';
+import React, { useState } from 'react';
+import './css/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import HomePage from './components/HomePage'
+import RandomTweetPage from './components/RandomTweetPage'
+import SearchTweetPage from './components/SearchTweetPage'
+import NavBar from './components/NavBar'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-function App() {
+const App = () => {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Twitter
-        </p>
-
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Switch>
+          <Route path='/' exact component={HomePage} />
+          <Route path='/search' component={SearchTweetPage} />
+          <Route path='/random' component={RandomTweetPage} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

@@ -3,7 +3,7 @@ import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './components/HomePage'
 import RandomTweetPage from './components/RandomTweetPage'
-import SearchTweetPage from './components/SearchTweetPage'
+import SearchTweetPage from './SearchTweetPage'
 import NavigationBar from './components/NavigationBar'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -12,7 +12,6 @@ const App = () => {
 
   return (
     <>
-
       <Router>
         <NavigationBar />
 

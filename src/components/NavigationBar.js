@@ -11,21 +11,8 @@ const NavigationBar = () => {
   return (
     <div>
 
-      {/* <Navbar bg="light" >
-
-        <Navbar.Brand>
-          <FontAwesomeIcon color="skyblue" size="lg" icon={faTwitter} />naamp
-        </Navbar.Brand>
-
-        <Nav className="ml-auto">
-          <Nav.Link><Link to="/">Home</Link></Nav.Link>
-          <Nav.Link><Link to='/search'>Search</Link></Nav.Link>
-          <Nav.Link><Link to='/random'>Random</Link></Nav.Link>
-        </Nav>
-
-      </Navbar> */}
-
       <Navbar bg="dark" variant="dark">
+
         <Navbar.Brand>
           <FontAwesomeIcon color="skyblue" size="lg" icon={faTwitter} />naamp
         </Navbar.Brand>

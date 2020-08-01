@@ -1,0 +1,48 @@
+.side-bar-1 {
+  width: 200px;
+  flex: 0 0 auto;
+  background-color: aquamarine;
+}
+
+.white-space {
+  width: 20px;
+  flex: 0 0 auto;
+}
+
+.main-content {
+  width: 550px;
+  flex: 0 4 auto;
+  background-color: lightsalmon;
+}
+
+/* .side-bar {
+    -ms-flex: 1 1 230px;
+    flex: 0 1 230px;
+    background-color: greenyellow; 
+}  */
+
+.main-tweet-container {
+  flex: 0 1 auto;
+  background-color: skyblue;
+  padding: 10px;
+}
+
+.row {
+  margin: 0 auto;
+}
+
+.user-logo {
+  height: 50px;
+}
+
+@media (max-width: 690px) {
+  .side-bar-1 {
+    display: none;
+  }
+}
+
+/* @media (max-width: 690px) {
+    .side-bar {
+      display just a logo
+    } 
+  } */

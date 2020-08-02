@@ -1,14 +1,13 @@
-import React from 'react'
+import React from 'react';
 import { Button, Card } from 'react-bootstrap';
-import logo from '../images/explore.jpg'
-import { Link } from 'react-router-dom'
-
+import logo from '../images/explore.jpg';
+import { Link } from 'react-router-dom';
 
 const Homepage = () => {
   return (
     <div>
-      <Card className="bg-dark text-white">
-        <Card.Img src={logo} alt="logo image" />
+      <Card className='bg-dark text-white'>
+        <Card.Img src={logo} alt='logo image' />
         <Card.ImgOverlay>
           <Card.Text>Find your inspiration</Card.Text>
           <Button>
@@ -23,10 +22,8 @@ const Homepage = () => {
           </Button>
         </Card.ImgOverlay>
       </Card>
-
     </div>
-  )
-}
+  );
+};
 
-
-export default Homepage
+export default Homepage;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './components/HomePage';
-import RandomTweetPage from './components/RandomTweetPage';
+import RandomMain from './components/RandomMain';
 import SearchMain from './components/SearchMain';
 import NavigationBar from './components/NavigationBar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -17,7 +17,7 @@ const App = () => {
           <Switch>
             <Route path='/' exact component={HomePage} />
             <Route path='/search' component={SearchMain} />
-            <Route path='/random' component={RandomTweetPage} />
+            <Route path='/random' component={RandomMain} />
           </Switch>
         </div>
       </Router>

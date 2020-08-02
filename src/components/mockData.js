@@ -80,6 +80,15 @@ const mockData = {
       comment_count: 70,
     },
   ],
+  imageData: [
+    {
+      bill_gates: [
+        'https://i.insider.com/5f21f32f3f737001697f2878?width=1100&format=jpeg&auto=webp',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/768px-Microsoft_logo.svg.png',
+      ],
+      michelle_obama: [],
+    },
+  ],
 };
 
 export default mockData;

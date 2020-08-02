@@ -6,29 +6,44 @@ import {
   FaNewspaper,
 } from 'react-icons/fa';
 import { Card } from 'react-bootstrap';
+import './css/SearchTweetPage.css';
 
 const SearchSidebar = () => {
   return (
-    <div>
-      <div className='d-flex'>
-        <FaFlask size='2em' />
-        <p> Science </p>
-      </div>
+    <div className='side-nav'>
+      <ul className='p-2'>
+        <li className='list-unstyled text-left my-3 mx-4'>
+          <FaFlask size='2em' />
+          <a href='#' className='link-label text-decoration-none'>
+            {' '}
+            Science{' '}
+          </a>
+        </li>
 
-      <div className='d-flex react-icon'>
-        <FaLandmark size='2em' />
-        <p> Politics </p>
-      </div>
+        <li className='list-unstyled text-left my-3 mx-4'>
+          <FaLandmark size='2em' />
+          <a href='#' className='link-label text-decoration-none'>
+            {' '}
+            Politics{' '}
+          </a>
+        </li>
 
-      <div className='d-flex'>
-        <FaSpaceShuttle size='2em' />
-        <p> Space </p>
-      </div>
+        <li className='list-unstyled text-left my-3 mx-4'>
+          <FaSpaceShuttle size='2em' />
+          <a href='#' className='link-label text-decoration-none'>
+            {' '}
+            Space{' '}
+          </a>
+        </li>
 
-      <div className='d-flex'>
-        <FaNewspaper size='2em' />
-        <p> News </p>
-      </div>
+        <li className='list-unstyled text-left my-3 mx-4'>
+          <FaNewspaper size='2em' />
+          <a href='#' className='link-label text-decoration-none'>
+            {' '}
+            News{' '}
+          </a>
+        </li>
+      </ul>
     </div>
   );
 };

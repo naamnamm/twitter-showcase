@@ -41,13 +41,15 @@ const SearchTweetPage = () => {
         </InputGroup>
       </header>
 
-      <main className='main-content-container mx-auto d-flex justify-content-center'>
-        <div className='side-bar-1'>
-          <SearchSidebar />
-        </div>
-        <div className='white-space'></div>
+      <main className='main-content-container'>
+        <div className='mx-auto d-flex justify-content-center'>
+          <div className='side-bar'>
+            <SearchSidebar />
+          </div>
+          <div className='white-space'></div>
 
-        <div className='main-content'>{displayTweets}</div>
+          <div className='main-content'>{displayTweets}</div>
+        </div>
       </main>
 
       <p>{windowWidth} px </p>

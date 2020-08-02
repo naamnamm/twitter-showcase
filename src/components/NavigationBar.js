@@ -15,13 +15,19 @@ const NavigationBar = () => {
 
         <Nav className='ml-auto'>
           <Nav.Link>
-            <Link to='/'>Home</Link>
+            <Link to='/' className='text-decoration-none text-white'>
+              Home
+            </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to='/search'>Search</Link>
+            <Link to='/search' className='text-decoration-none text-white'>
+              Search
+            </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to='/random'>Random</Link>
+            <Link to='/random' className='text-decoration-none text-white'>
+              Random
+            </Link>
           </Nav.Link>
         </Nav>
       </Navbar>

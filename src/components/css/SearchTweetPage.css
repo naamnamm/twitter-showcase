@@ -1,6 +1,10 @@
-.side-bar-1 {
+.container {
+  margin: 0 auto;
+}
+
+.side-bar {
   width: 200px;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   background-color: aquamarine;
 }
 
@@ -11,7 +15,7 @@
 
 .main-content {
   width: 550px;
-  flex: 0 4 auto;
+  flex: 0 0 auto;
   background-color: lightsalmon;
 }
 
@@ -35,14 +39,14 @@
   height: 50px;
 }
 
-@media (max-width: 690px) {
-  .side-bar-1 {
+@media (max-width: 990px) {
+  .link-label {
     display: none;
   }
 }
 
-/* @media (max-width: 690px) {
-    .side-bar {
-      display just a logo
-    } 
-  } */
+@media (max-width: 690px) {
+  .side-bar {
+    display: none;
+  }
+}

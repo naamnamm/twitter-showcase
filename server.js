@@ -1,11 +1,17 @@
 const express = require('express')
-const app = express()
-const port = 3000
 
-app.use(express.static('src'));
+const app = express();
 
-//define endpoint
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/api/customers', (req, res) => {
+  const customers = [
+    { id: 1, name: "John", age: 8 },
+    { id: 2, name: "Mary", age: 9 },
+    { id: 3, name: "Henry", age: 10 }
+  ]
 
-//start the application
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+  res.json(customers)
+})
+
+const port = 5000;
+
+app.listen(port, () => console.log(`server started on port ${port}`))

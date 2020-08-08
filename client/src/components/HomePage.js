@@ -2,32 +2,32 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import logo from '../images/explore.jpg';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
 const Homepage = () => {
-  const [customers, setCustomers] = useState([]);
+  // const [customers, setCustomers] = useState([]);
 
-  const getCustomersData = async () => {
-    try {
-      const data = await fetch('/api/customers').then((res) => res.json());
-      return data;
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+  // const getCustomersData = async () => {
+  //   try {
+  //     const data = await fetch('/api/customers').then((res) => res.json());
+  //     return data;
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const customers = await getCustomersData();
-        setCustomers(customers);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const customers = await getCustomersData();
+  //       setCustomers(customers);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   return (
     <div>
@@ -48,11 +48,11 @@ const Homepage = () => {
         </Card.ImgOverlay>
       </Card>
 
-      <ul>
+      {/* <ul>
         {customers.map((customer) => (
           <li key={customer.id}>{customer.name}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };

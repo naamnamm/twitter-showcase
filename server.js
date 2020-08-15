@@ -1,9 +1,16 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const axios = require('axios');
 const fetch = require('node-fetch');
 const url = require('url');
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 const access_token =
   'AAAAAAAAAAAAAAAAAAAAALolGgEAAAAAzj%2F3%2BTeA%2BN04S2G8zGzn3pfMRI8%3DFotMuEbFwoKJVkmgk7fsX1sqDDu0AIjQ0bFYLyCqpkPCECz0JP';
@@ -21,6 +28,8 @@ app.get('/tweets/search', async (req, res) => {
   const params = { q: 'nasa', result_type: 'popular', lang: 'en' };
   url.search = new URLSearchParams(params).toString();
 
+  console.log(url);
+
   const fetchData = await fetch(url, header);
   const data = await fetchData.json();
   const mappedData = data.statuses.map((tweet) => tweet.text);
@@ -32,7 +41,7 @@ const getData = async () => {
   const url = new URL(
     'https://api.twitter.com/1.1/search/tweets.json?q=from%3A'
   );
-  const myTopFive = ['BillGates', 'MichelleObama'];
+  const myTopFive = ['BillGates', 'MichelleObama', 'ZacEfron'];
   const mappedRequests = myTopFive.map((name) =>
     axios.get(`${url}${name}`, header)
   );

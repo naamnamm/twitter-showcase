@@ -28,11 +28,9 @@ app.get('/tweets/search', async (req, res) => {
   const params = { q: 'nasa', result_type: 'popular', lang: 'en' };
   url.search = new URLSearchParams(params).toString();
 
-  console.log(url);
-
   const fetchData = await fetch(url, header);
   const data = await fetchData.json();
-  const mappedData = data.statuses.map((tweet) => tweet.text);
+  const mappedData = data.statuses.map((tweet) => tweet);
 
   res.send(mappedData);
 });

@@ -1,28 +1,45 @@
 import React from 'react';
 import { Container, InputGroup, FormControl, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import './css/SearchTweetPage.css';
+import './SearchTweetPage.css';
 import SearchTweet from './SearchTweet';
-import mockData from './mockData';
+import mockData from '../randompage/mockData';
 import SearchSidebar from './SearchSidebar';
 import { FaTwitter } from 'react-icons/fa';
+import axios from 'axios';
 
 const SearchTweetPage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [searchTweet, setSearchTweet] = useState([]);
 
   const handleSize = () => {
     setWindowWidth(window.innerWidth);
   };
 
-  const tweets = mockData.statuses;
-
-  const displayTweets = tweets.map((tweet) => (
-    <SearchTweet key={tweet.id_str} tweet={tweet} />
-  ));
+  const getTweets = async () => {
+    try {
+      const getTweets = await axios.get('/tweets/search');
+      return getTweets;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     window.addEventListener('resize', handleSize);
+
+    const getSearchTweets = async () => {
+      const tweets = await getTweets();
+      console.log(tweets);
+      setSearchTweet(tweets.data);
+    };
+
+    getSearchTweets();
   }, []);
+
+  const displayTweets = searchTweet.map((tweet) => (
+    <SearchTweet key={tweet.id} tweet={tweet} />
+  ));
 
   return (
     <Container>

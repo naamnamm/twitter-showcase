@@ -14,16 +14,13 @@ const Tweet = ({ tweet }) => {
     <div className='row'>
       <div className='main-tweet-container border d-flex col'>
         <Image
-          src='https://previews.123rf.com/images/koblizeek/koblizeek1904/koblizeek190400053/120906930-man-icon-profile-member-user-perconal-symbol-vector-on-white-isolated-background-.jpg'
+          src={tweet.user.profile_image_url}
           className='rounded-sm user-logo'
         />
         <Card className='p-1'>
           <div className='text-left'>{tweet.user.name}</div>
 
-          <div className='text-left'>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </div>
+          <div className='text-left'>{tweet.text}</div>
 
           <Card className='my-2'>
             <Card.Img
@@ -49,14 +46,14 @@ const Tweet = ({ tweet }) => {
               <div className='mr-2'>
                 <FontAwesomeIcon color='green' size='sm' icon={faRetweet} />
               </div>
-              <div>{tweet.comment_count}</div>
+              <div>{tweet.retweet_count}</div>
             </div>
 
             <div className='likes-container d-flex'>
               <div className='mr-2'>
                 <FontAwesomeIcon color='red' size='sm' icon={faHeart} />
               </div>
-              <div>{tweet.like_count}</div>
+              <div>{tweet.favorite_count}</div>
             </div>
           </div>
         </Card>

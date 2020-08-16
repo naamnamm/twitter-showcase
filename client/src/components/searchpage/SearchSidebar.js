@@ -6,7 +6,7 @@ import {
   FaNewspaper,
 } from 'react-icons/fa';
 import { Card } from 'react-bootstrap';
-import './css/SearchTweetPage.css';
+import './SearchTweetPage.css';
 
 const SearchSidebar = () => {
   return (

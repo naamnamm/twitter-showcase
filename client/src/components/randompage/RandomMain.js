@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Button, ButtonGroup } from 'react-bootstrap';
-import './css/RandomPage.css';
+import './RandomPage.css';
 import { useState, useEffect } from 'react';
 import RandomTweet from './RandomTweet';
 import RandomPhoto from './RandomPhoto';

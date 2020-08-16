@@ -6,7 +6,7 @@
   "scripts": {
     "start": "server.js",
     "server": "nodemon server.js",
-    "client": "cd client && npm start",
+    "client": "npm run watch --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "postinstall": "cd client && npm install"
   },

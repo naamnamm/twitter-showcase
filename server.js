@@ -25,7 +25,12 @@ const header = {
 
 app.get('/tweets/search', async (req, res) => {
   const url = new URL('https://api.twitter.com/1.1/search/tweets.json');
-  const params = { q: 'nasa', result_type: 'popular', lang: 'en' };
+  const params = {
+    q: 'nasa',
+    result_type: 'popular',
+    lang: 'en',
+    tweet_mode: 'extended',
+  };
   url.search = new URLSearchParams(params).toString();
 
   const fetchData = await fetch(url, header);

@@ -2,42 +2,40 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faRetweet } from '@fortawesome/free-solid-svg-icons';
 import { Card, Image } from 'react-bootstrap';
+import { Player } from 'video-react';
+import ReactPlayer from 'react-player';
 
 const Tweet = ({ tweet }) => {
   console.log(tweet);
 
-  //if media != null
-  // ----check type if type is photo or animated_gif > img tag
-  // ---------------if type is video > video tag
-
-  //const result = tweet.extended_entities;
-  //const sample = tweet.extended_entities ? tweet.extended_entities.media : null;
-  const media = tweet.extended_entities
-    ? tweet.extended_entities.media.map(
-        ({ type, media_url, additional_media_info }) => ({
-          type,
-          media_url,
-          additional_media_info,
-        })
-      )
+  let mediaType = tweet.extended_entities
+    ? tweet.extended_entities.media[0].type
     : null;
 
-  console.log(media);
-
-  const displayPhoto =
-    media != null
-      ? media.map(({ media_url, additional_media_info }) => (
+  let displayMedia =
+    mediaType === 'photo'
+      ? tweet.extended_entities.media.map(
+          ({ media_url, additional_media_info }) => (
+            <Card className='my-2'>
+              <Card.Img variant='top' src={media_url} />
+              {/* <Card.Text>{title}</Card.Text>
+            <Card.Text>{description}</Card.Text> */}
+            </Card>
+          )
+        )
+      : mediaType === 'video'
+      ? tweet.extended_entities.media.map(({ video_info }) => (
           <Card className='my-2'>
-            <Card.Img variant='top' src={media_url} />
+            <ReactPlayer
+              width='468px'
+              url={video_info.variants[0].url}
+              controls={true}
+            />
             {/* <Card.Text>{title}</Card.Text>
-              <Card.Text>{description}</Card.Text> */}
+                <Card.Text>{description}</Card.Text> */}
           </Card>
         ))
       : null;
-
-  //const displayVideo =
-
-  const displayMedia = media == null ? null : displayPhoto;
 
   return (
     <div className='row'>
@@ -75,3 +73,18 @@ const Tweet = ({ tweet }) => {
 };
 
 export default Tweet;
+
+// const displayPhoto =
+//   media != null
+//     ? media.map(({ media_url, additional_media_info }) => (
+//         <Card className='my-2'>
+//           <Card.Img variant='top' src={media_url} />
+//           {/* <Card.Text>{title}</Card.Text>
+//             <Card.Text>{description}</Card.Text> */}
+//         </Card>
+//       ))
+//     : null;
+
+//const displayVideo =
+
+// const displayMedia = media == null ? null : displayPhoto;

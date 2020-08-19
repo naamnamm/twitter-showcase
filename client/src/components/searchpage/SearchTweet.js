@@ -6,7 +6,7 @@ import { Player } from 'video-react';
 import ReactPlayer from 'react-player';
 
 const Tweet = ({ tweet }) => {
-  console.log(tweet);
+  //console.log(tweet);
 
   let mediaType = tweet.extended_entities
     ? tweet.extended_entities.media[0].type

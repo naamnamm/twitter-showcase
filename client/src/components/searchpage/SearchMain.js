@@ -11,9 +11,32 @@ import axios from 'axios';
 const SearchTweetPage = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [searchTweet, setSearchTweet] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
 
   const handleSize = () => {
     setWindowWidth(window.innerWidth);
+  };
+
+  const handleChange = (e) => {
+    const searchValue = e.target.value;
+    setSearchInput(searchValue);
+    console.log(searchValue);
+  };
+
+  const handleSearchRequest = async () => {
+    console.log(searchInput);
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ q: searchInput }),
+    };
+
+    const fetchData = await fetch('/tweets/search', options);
+    const json = await fetchData.json();
+    console.log(json);
   };
 
   const getTweets = async () => {
@@ -51,9 +74,16 @@ const SearchTweetPage = () => {
             placeholder='Search Tweet'
             aria-label='Search Tweet'
             aria-describedby='basic-addon2'
+            onChange={handleChange}
+            value={searchInput}
           />
           <InputGroup.Append>
-            <Button variant='outline-secondary'>Search</Button>
+            <Button
+              onClick={() => handleSearchRequest()}
+              variant='outline-secondary'
+            >
+              Search
+            </Button>
           </InputGroup.Append>
         </InputGroup>
       </header>

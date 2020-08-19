@@ -7,7 +7,6 @@ const url = require('url');
 const path = require('path');
 
 app.use(express.static(path.join(__dirname, 'client/build')));
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
@@ -38,6 +37,14 @@ app.get('/tweets/search', async (req, res) => {
   const mappedData = data.statuses.map((tweet) => tweet);
 
   res.send(mappedData);
+});
+
+app.use(express.json());
+app.post('/tweets/search', (req, res) => {
+  console.log('I got the msg!');
+  console.log(req.body);
+
+  res.send({ msg: 'received request' });
 });
 
 const getData = async () => {

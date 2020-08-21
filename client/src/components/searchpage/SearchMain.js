@@ -3,7 +3,6 @@ import { Container, InputGroup, FormControl, Button } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import './SearchTweetPage.css';
 import SearchTweet from './SearchTweet';
-import mockData from '../randompage/mockData';
 import SearchSidebar from './SearchSidebar';
 import { FaTwitter } from 'react-icons/fa';
 import axios from 'axios';
@@ -20,23 +19,15 @@ const SearchTweetPage = () => {
   const handleChange = (e) => {
     const searchValue = e.target.value;
     setSearchInput(searchValue);
-    console.log(searchValue);
   };
 
   const handleSearchRequest = async () => {
-    console.log(searchInput);
+    let q = searchInput;
 
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ q: searchInput }),
-    };
-
-    const fetchData = await fetch('/tweets/search', options);
+    const fetchData = await fetch(`/tweets/search/:${q}`);
     const json = await fetchData.json();
-    console.log(json);
+    setSearchTweet(json.statuses);
+    setSearchInput('');
   };
 
   const getTweets = async () => {

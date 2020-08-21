@@ -5,8 +5,9 @@ const axios = require('axios');
 const fetch = require('node-fetch');
 const url = require('url');
 const path = require('path');
-
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
@@ -39,12 +40,20 @@ app.get('/tweets/search', async (req, res) => {
   res.send(mappedData);
 });
 
-app.use(express.json());
-app.post('/tweets/search', (req, res) => {
-  console.log('I got the msg!');
-  console.log(req.body);
+app.get('/tweets/search/:q', async (req, res) => {
+  const additionalParams = {
+    result_type: 'popular',
+    lang: 'en',
+    tweet_mode: 'extended',
+  };
 
-  res.send({ msg: 'received request' });
+  Object.assign(req.params, additionalParams);
+
+  const url = new URL('https://api.twitter.com/1.1/search/tweets.json');
+  url.search = new URLSearchParams(req.params).toString();
+  const fetchData = await fetch(url, header);
+  const data = await fetchData.json();
+  res.json(data);
 });
 
 const getData = async () => {

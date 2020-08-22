@@ -5,13 +5,49 @@ import {
   FaSpaceShuttle,
   FaNewspaper,
 } from 'react-icons/fa';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import './SearchTweetPage.css';
 
-const SearchSidebar = () => {
+const SearchSidebar = ({ handleClick }) => {
   return (
     <div className='side-nav'>
-      <ul className='p-2'>
+      <Button
+        value='science'
+        onClick={(e) => handleClick(e)}
+        className='mb-1 mt-1'
+      >
+        <FaFlask size='2em' className='mr-1' />
+        Science
+      </Button>
+
+      <Button
+        value='politics'
+        onClick={(e) => handleClick(e)}
+        className='mb-1 mt-1'
+      >
+        <FaLandmark size='2em' className='mr-1' />
+        Politics
+      </Button>
+
+      <Button
+        value='space'
+        onClick={(e) => handleClick(e)}
+        className='mb-1 mt-1'
+      >
+        <FaSpaceShuttle size='2em' className='mr-1' />
+        Space
+      </Button>
+
+      <Button
+        value='news'
+        onClick={(e) => handleClick(e)}
+        className='mb-1 mt-1'
+      >
+        <FaNewspaper size='2em' className='mr-1' />
+        News
+      </Button>
+
+      {/* <ul className='p-2'>
         <li className='list-unstyled text-left my-3 mx-4'>
           <FaFlask size='2em' />
           <a href='#' className='link-label text-decoration-none'>
@@ -43,7 +79,7 @@ const SearchSidebar = () => {
             News{' '}
           </a>
         </li>
-      </ul>
+      </ul> */}
     </div>
   );
 };

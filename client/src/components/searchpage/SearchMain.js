@@ -30,6 +30,14 @@ const SearchTweetPage = () => {
     setSearchInput('');
   };
 
+  const handleClick = async (e) => {
+    let q = e.target.value;
+
+    const fetchData = await fetch(`/tweets/search/:${q}`);
+    const json = await fetchData.json();
+    setSearchTweet(json.statuses);
+  };
+
   const getTweets = async () => {
     try {
       const getTweets = await axios.get('/tweets/search');
@@ -44,7 +52,6 @@ const SearchTweetPage = () => {
 
     const getSearchTweets = async () => {
       const tweets = await getTweets();
-      console.log(tweets);
       setSearchTweet(tweets.data);
     };
 
@@ -82,7 +89,7 @@ const SearchTweetPage = () => {
       <main className='main-content-container'>
         <div className='mx-auto d-flex justify-content-center'>
           <div className='side-bar'>
-            <SearchSidebar />
+            <SearchSidebar handleClick={handleClick} />
           </div>
           <div className='white-space'></div>
 

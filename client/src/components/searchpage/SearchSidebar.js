@@ -14,7 +14,7 @@ const SearchSidebar = ({ handleClick }) => {
       <Button
         value='science'
         onClick={(e) => handleClick(e)}
-        className='mb-1 mt-1'
+        className='my-2 btn-block'
       >
         <FaFlask size='2em' className='mr-1' />
         Science
@@ -23,7 +23,7 @@ const SearchSidebar = ({ handleClick }) => {
       <Button
         value='politics'
         onClick={(e) => handleClick(e)}
-        className='mb-1 mt-1'
+        className='my-2 btn-block'
       >
         <FaLandmark size='2em' className='mr-1' />
         Politics
@@ -32,7 +32,7 @@ const SearchSidebar = ({ handleClick }) => {
       <Button
         value='space'
         onClick={(e) => handleClick(e)}
-        className='mb-1 mt-1'
+        className='my-2 btn-block'
       >
         <FaSpaceShuttle size='2em' className='mr-1' />
         Space
@@ -41,7 +41,7 @@ const SearchSidebar = ({ handleClick }) => {
       <Button
         value='news'
         onClick={(e) => handleClick(e)}
-        className='mb-1 mt-1'
+        className='my-2 btn-block'
       >
         <FaNewspaper size='2em' className='mr-1' />
         News

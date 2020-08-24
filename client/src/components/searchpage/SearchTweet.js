@@ -4,6 +4,7 @@ import { faHeart, faRetweet } from '@fortawesome/free-solid-svg-icons';
 import { Card, Image } from 'react-bootstrap';
 import { Player } from 'video-react';
 import ReactPlayer from 'react-player';
+import reactStringReplace from 'react-string-replace';
 
 const Tweet = ({ tweet }) => {
   console.log(tweet);
@@ -65,23 +66,43 @@ const Tweet = ({ tweet }) => {
         })
       : null;
 
-  const formatText = (text) => {
+  const parseText = (text) => {
     let repl = text.replace(/#(\w+)/g, '<a href="#">#$1</a>');
+    // putting it in an array - returns `Object Object` on the page
     return repl;
   };
 
-  const displayText = () => {
-    //let regExp = '/[-a-zA-Z0-9@:%._+~#=]{1,256}.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)?/gi';
-    let parts = tweet.full_text.split(/(^|\W)(#[a-z\d][\w-]*)/gi);
-    for (var i = 1; i < parts.length; i += 2) {
-      console.log(parts[i]);
-      parts[i] = (
-        <a href={parts[i]} key={i}>
-          {parts[i]}
-        </a>
-      );
-    }
+  String.prototype.parseURL = function () {
+    return this.replace(
+      /[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g,
+      function (url) {
+        return <a href={url}>{url}</a>;
+      }
+    );
+  };
 
+  String.prototype.parseUsername = function () {
+    return this.replace(/[@]+[A-Za-z0-9-_]+/g, function (u) {
+      var username = u.replace('@', '');
+
+      return u.link('http://twitter.com/' + username);
+    });
+  };
+
+  String.prototype.parseHashtag = function () {
+    return this.replace(/[#]+[A-Za-z0-9-_]+/g, function (t) {
+      var tag = t.replace('#', '%23');
+
+      return t.link('http://search.twitter.com/search?q=' + tag);
+    });
+  };
+
+  const displayText = (text) => {
+    let parts = text
+      .split(/(^|\W)(#[a-z\d][\w-]*)/gi)
+      .map((part) => (part.includes('#') ? <a href={part}>{part}</a> : part));
+
+    console.log(parts);
     return parts;
   };
 
@@ -98,6 +119,32 @@ const Tweet = ({ tweet }) => {
     // }
 
     return parts;
+  };
+
+  const formatStr = (text) => {
+    let replacedText;
+
+    replacedText = reactStringReplace(text, /(https?:\/\/\S+)/g, (match, i) => (
+      <a key={match + i} href={match}>
+        {match}
+      </a>
+    ));
+    replacedText = reactStringReplace(replacedText, /@(\w+)/g, (match, i) => (
+      <a key={match + i} href={`https://twitter.com/${match}`}>
+        @{match}
+      </a>
+    ));
+    replacedText = reactStringReplace(replacedText, /#(\w+)/g, (match, i) => (
+      <a key={match + i} href={`https://twitter.com/hashtag/${match}`}>
+        #{match}
+      </a>
+    ));
+
+    replacedText = reactStringReplace(replacedText, /\n/g, (match, i) => (
+      <p>{match}</p>
+    ));
+
+    return replacedText;
   };
 
   return (
@@ -119,9 +166,15 @@ const Tweet = ({ tweet }) => {
             <span className='text-muted ml-1'>@{tweet.user.screen_name}</span>
           </div>
 
-          <div className='text-left'>{tweet.full_text}</div>
+          <div className='text-left'>{formatStr(tweet.full_text)}</div>
 
-          {displayText2(tweet.full_text)}
+          {/* <div className='text-left'>
+            {tweet.full_text.parseURL().parseHashtag().parseUsername()}
+          </div> */}
+
+          {/* <div className='text-left d-inline'>
+            {displayText(tweet.full_text)}
+          </div> */}
 
           {displayMedia}
 

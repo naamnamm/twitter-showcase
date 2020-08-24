@@ -10,7 +10,6 @@ const NavigationBar = () => {
       <Navbar bg='dark' variant='dark'>
         <Navbar.Brand>
           <FontAwesomeIcon color='skyblue' size='lg' icon={faTwitter} />
-          naamp
         </Navbar.Brand>
 
         <Nav className='ml-auto'>

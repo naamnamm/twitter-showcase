@@ -2,9 +2,9 @@ import React from 'react';
 import { Image } from 'react-bootstrap';
 import mockData from './mockData';
 
-const RandomPhoto = ({ name }) => {
-  console.log(name);
-  console.log(mockData.imageData);
+const RandomPhoto = () => {
+  // console.log(name);
+  // console.log(mockData.imageData);
 
   //loop through array of names - if matched map the url with <Image>
   //const displayImages = mockData.im

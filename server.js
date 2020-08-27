@@ -56,40 +56,60 @@ app.get('/tweets/search/:q', async (req, res) => {
   res.json(data);
 });
 
-const getData = async () => {
-  const url = new URL(
-    'https://api.twitter.com/1.1/search/tweets.json?q=from%3A'
-  );
-  const myTopFive = ['BillGates', 'MichelleObama', 'ZacEfron'];
-  const mappedRequests = myTopFive.map((name) =>
-    axios.get(`${url}${name}`, header)
-  );
+app.get('/tweets/user/:q', async (req, res) => {
+  const url = new URL('https://api.twitter.com/1.1/search/tweets.json?');
 
-  try {
-    const fetchData = await Promise.all(mappedRequests);
-    return fetchData;
-  } catch (error) {
-    console.log(error);
-  }
-};
+  const additionalParams = {
+    tweet_mode: 'extended',
+  };
 
-app.get('/tweets/user', async (req, res) => {
-  const data = await getData();
-  //original
-  const tweetsFromUser = data.map((data) => data.data.statuses);
-  //sample
-  const mappedText = data.map((data) =>
-    data.data.statuses.map((item) => item.text)
-  );
+  Object.assign(req.params, additionalParams);
 
-  const randomTweets = mappedText.map((item) => {
-    let randomNum = Math.floor(Math.random() * Math.floor(item.length));
-
-    return item[randomNum];
-  });
-
-  res.send(randomTweets);
+  url.search = new URLSearchParams(req.params).toString();
+  const fetchData = await fetch(url, header);
+  const tweets = await fetchData.json();
+  res.send(tweets.statuses);
 });
+
+// const getData = async () => {
+//   const url = new URL(
+//     'https://api.twitter.com/1.1/search/tweets.json?q=from%3A'
+//   );
+//   const myTopFive = [
+//     'BillGates',
+//     'MichelleObama',
+//     'Trevornoah',
+//     'jimmyfallon',
+//     'nickjonas',
+//   ];
+//   const mappedRequests = myTopFive.map((name) =>
+//     axios.get(`${url}${name}&tweet_mode=extended`, header)
+//   );
+
+//   try {
+//     const fetchData = await Promise.all(mappedRequests);
+//     return fetchData;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// app.get('/tweets/user', async (req, res) => {
+//   const data = await getData();
+//   //original
+//   const tweetsFromUser = data.map((data) => data.data.statuses);
+//   //sample
+//   const mappedText = data.map((data) => data.data.statuses.map((item) => item));
+
+//   const randomTweets = mappedText.map((item) => {
+//     console.log(item.length);
+//     let randomNum = Math.floor(Math.random() * Math.floor(item.length));
+
+//     return item[randomNum];
+//   });
+
+//   res.send(randomTweets);
+// });
 
 app.listen(port, () => console.log(`server started on port ${port}`));
 

@@ -9,7 +9,6 @@ import { faHeart, faRetweet } from '@fortawesome/free-solid-svg-icons';
 import reactStringReplace from 'react-string-replace';
 
 const RandomTweet = ({ q }) => {
-  console.log(q);
   const [randomTweet, setRandomTweet] = useState([]);
 
   const getTweets = async () => {
@@ -69,7 +68,7 @@ const RandomTweet = ({ q }) => {
   };
 
   const displayTweet = randomTweet.map((tweet) => (
-    <>
+    <div className='mx-auto my-auto main-tweet-container border d-flex'>
       <Image
         src={tweet.user.profile_image_url}
         className='rounded-sm user-logo'
@@ -104,7 +103,7 @@ const RandomTweet = ({ q }) => {
           </div>
         </div>
       </Card>
-    </>
+    </div>
   ));
 
   return (

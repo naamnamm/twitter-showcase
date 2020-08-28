@@ -1,10 +1,15 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faRetweet } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHeart,
+  faRetweet,
+  faGenderless,
+} from '@fortawesome/free-solid-svg-icons';
 import { Card, Image } from 'react-bootstrap';
 import { Player } from 'video-react';
 import ReactPlayer from 'react-player';
 import reactStringReplace from 'react-string-replace';
+import moment from 'moment';
 
 const Tweet = ({ tweet }) => {
   console.log(tweet);
@@ -147,6 +152,19 @@ const Tweet = ({ tweet }) => {
     return replacedText;
   };
 
+  const formatTime = () => {
+    //if more than 24 hr - display Aug 28
+    // else display hrs
+  };
+
+  const diff = new Date() - new Date(tweet.created_at);
+  let msec = diff;
+  let hh = Math.floor(msec / 1000 / 60 / 60);
+  msec -= hh * 1000 * 60 * 60;
+
+  const displayTime =
+    hh > 24 ? moment(tweet.created_at).format('MMM D') : `${hh}h`;
+
   return (
     <div className='row'>
       <div className='main-tweet-container border d-flex col'>
@@ -164,6 +182,7 @@ const Tweet = ({ tweet }) => {
               {tweet.user.name}
             </a>
             <span className='text-muted ml-1'>@{tweet.user.screen_name}</span>
+            <span className='text-muted ml-1'> · {displayTime}</span>
           </div>
 
           <div className='text-left'>{formatStr(tweet.full_text)}</div>

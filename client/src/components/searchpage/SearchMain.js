@@ -64,9 +64,7 @@ const SearchTweetPage = () => {
 
   return (
     <Container>
-      <FaTwitter />
-
-      <header>
+      <header className='mt-4 mb-4'>
         <InputGroup className='mb-3'>
           <FormControl
             placeholder='Search Tweet'

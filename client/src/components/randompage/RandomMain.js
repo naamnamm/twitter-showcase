@@ -9,29 +9,28 @@ import {
 import './RandomPage.css';
 import { useState, useEffect } from 'react';
 import RandomTweet from './RandomTweet';
-import RandomPhoto from './RandomPhoto';
 import axios from 'axios';
 
 const RandomMain = () => {
   const [userTweet, setUserTweet] = useState('');
-  const [user, setUser] = useState('');
+  const [searchUser, setSearchUser] = useState('');
   const [filterTweet, setFilteredTweet] = useState([]);
 
   const handleClick = (e) => {
-    setUser(e.target.value);
+    setSearchUser(e.target.value);
   };
 
-  //if !user = jumbotron, else show tweet
+  //if !searchUser = jumbotron, else show tweet
   const displayLoading = (
     <Jumbotron className='jumbo-size mx-auto'>
       <Spinner animation='border' />
     </Jumbotron>
   );
 
-  const displayContent = !user ? (
+  const displayContent = !searchUser ? (
     displayLoading
   ) : (
-    <RandomTweet q={`from:${user}`} />
+    <RandomTweet key={Date.now()} q={`from:${searchUser}`} />
   );
 
   return (
@@ -77,9 +76,9 @@ const RandomMain = () => {
       </header>
 
       <main>
-        <div className='content-container'>
-          <div className='row'>{displayContent}</div>
-        </div>
+        {/* <div className='content-container'> */}
+        <div className='row mx-auto my-auto'>{displayContent}</div>
+        {/* </div> */}
       </main>
     </div>
   );

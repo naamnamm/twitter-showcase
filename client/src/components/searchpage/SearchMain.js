@@ -4,17 +4,11 @@ import { useState, useEffect } from 'react';
 import './SearchTweetPage.css';
 import SearchTweet from './SearchTweet';
 import SearchSidebar from './SearchSidebar';
-import { FaTwitter } from 'react-icons/fa';
 import axios from 'axios';
 
 const SearchTweetPage = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [searchTweet, setSearchTweet] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-
-  const handleSize = () => {
-    setWindowWidth(window.innerWidth);
-  };
 
   const handleChange = (e) => {
     const searchValue = e.target.value;
@@ -48,8 +42,6 @@ const SearchTweetPage = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('resize', handleSize);
-
     const getSearchTweets = async () => {
       const tweets = await getTweets();
       setSearchTweet(tweets.data);
@@ -94,8 +86,6 @@ const SearchTweetPage = () => {
           <div className='main-content'>{displayTweets}</div>
         </div>
       </main>
-
-      <p>{windowWidth} px </p>
     </Container>
   );
 };

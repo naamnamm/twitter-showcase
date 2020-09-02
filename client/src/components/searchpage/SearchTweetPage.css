@@ -5,7 +5,6 @@
 .side-bar {
   width: 120px;
   flex: 0 1 auto;
-  background-color: aquamarine;
 }
 
 .white-space {
@@ -16,18 +15,10 @@
 .main-content {
   width: 550px;
   flex: 0 0 auto;
-  background-color: lightsalmon;
 }
-
-/* .side-bar {
-    -ms-flex: 1 1 230px;
-    flex: 0 1 230px;
-    background-color: greenyellow; 
-}  */
 
 .main-tweet-container {
   flex: 0 1 auto;
-  background-color: skyblue;
   padding: 10px;
 }
 

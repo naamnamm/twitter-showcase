@@ -4,8 +4,10 @@ import {
   FaLandmark,
   FaSpaceShuttle,
   FaNewspaper,
+  FaFootballBall,
+  FaGrinSquintTears,
 } from 'react-icons/fa';
-import { Card, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './SearchTweetPage.css';
 
 const SearchSidebar = ({ handleClick }) => {
@@ -47,39 +49,23 @@ const SearchSidebar = ({ handleClick }) => {
         News
       </Button>
 
-      {/* <ul className='p-2'>
-        <li className='list-unstyled text-left my-3 mx-4'>
-          <FaFlask size='2em' />
-          <a href='#' className='link-label text-decoration-none'>
-            {' '}
-            Science{' '}
-          </a>
-        </li>
+      <Button
+        value='sports'
+        onClick={(e) => handleClick(e)}
+        className='my-2 btn-block'
+      >
+        <FaFootballBall size='2em' className='mr-1' />
+        Sports
+      </Button>
 
-        <li className='list-unstyled text-left my-3 mx-4'>
-          <FaLandmark size='2em' />
-          <a href='#' className='link-label text-decoration-none'>
-            {' '}
-            Politics{' '}
-          </a>
-        </li>
-
-        <li className='list-unstyled text-left my-3 mx-4'>
-          <FaSpaceShuttle size='2em' />
-          <a href='#' className='link-label text-decoration-none'>
-            {' '}
-            Space{' '}
-          </a>
-        </li>
-
-        <li className='list-unstyled text-left my-3 mx-4'>
-          <FaNewspaper size='2em' />
-          <a href='#' className='link-label text-decoration-none'>
-            {' '}
-            News{' '}
-          </a>
-        </li>
-      </ul> */}
+      <Button
+        value='meme'
+        onClick={(e) => handleClick(e)}
+        className='my-2 btn-block'
+      >
+        <FaGrinSquintTears size='2em' className='mr-1' />
+        Meme
+      </Button>
     </div>
   );
 };

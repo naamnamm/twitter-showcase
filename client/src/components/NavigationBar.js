@@ -13,21 +13,20 @@ const NavigationBar = () => {
         </Navbar.Brand>
 
         <Nav className='ml-auto'>
-          <Nav.Link>
-            <Link to='/' className='text-decoration-none text-white'>
-              Home
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to='/search' className='text-decoration-none text-white'>
-              Search
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to='/random' className='text-decoration-none text-white'>
-              Random
-            </Link>
-          </Nav.Link>
+          <Link to='/' className='text-decoration-none text-white '>
+            Home
+          </Link>
+
+          <Link to='/search' className='text-decoration-none text-white ml-4'>
+            Search
+          </Link>
+
+          <Link
+            to='/random'
+            className='text-decoration-none text-white ml-4 mr-2'
+          >
+            Random
+          </Link>
         </Nav>
       </Navbar>
     </div>

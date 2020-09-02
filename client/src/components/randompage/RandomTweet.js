@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Image, Jumbotron, Spinner } from 'react-bootstrap';
-import { FaHeart, FaComment, FaRetweet } from 'react-icons/fa';
+import { Card, Image, Jumbotron } from 'react-bootstrap';
 import './RandomPage.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -23,7 +22,6 @@ const RandomTweet = ({ q }) => {
   useEffect(() => {
     const getUserTweets = async () => {
       const tweets = await getTweets();
-      console.log(tweets.data);
 
       const randomNum = await Math.floor(
         Math.random() * Math.floor(tweets.data.length)
@@ -34,7 +32,6 @@ const RandomTweet = ({ q }) => {
       function f() {
         return Array.from(arguments);
       }
-      console.log(f(randomTweet));
       setRandomTweet(f(randomTweet));
     };
 
@@ -61,17 +58,20 @@ const RandomTweet = ({ q }) => {
     ));
 
     replacedText = reactStringReplace(replacedText, /\n/g, (match, i) => (
-      <p>{match}</p>
+      <p key={match + i}>{match}</p>
     ));
 
     return replacedText;
   };
 
+  const formatNumber = (num) =>
+    num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
   const displayTweet = randomTweet.map((tweet) => (
-    <div className='mx-auto my-auto main-tweet-container border d-flex'>
+    <div key={Date.now()} className='d-flex main-tweet-container mx-auto'>
       <Image
         src={tweet.user.profile_image_url}
-        className='rounded-sm user-logo'
+        className='rounded-sm user-logo mr-1'
         roundedCircle
       />
       <Card className='p-1'>
@@ -92,25 +92,21 @@ const RandomTweet = ({ q }) => {
             <div className='mr-2'>
               <FontAwesomeIcon color='green' size='sm' icon={faRetweet} />
             </div>
-            <div>{tweet.retweet_count}</div>
+            <div>{formatNumber(tweet.retweet_count)}</div>
           </div>
 
           <div className='likes-container d-flex'>
             <div className='mr-2'>
               <FontAwesomeIcon color='red' size='sm' icon={faHeart} />
             </div>
-            <div>{tweet.favorite_count}</div>
+            <div>{formatNumber(tweet.favorite_count)}</div>
           </div>
         </div>
       </Card>
     </div>
   ));
 
-  return (
-    <div>
-      <div className='border d-flex col'>{displayTweet}</div>
-    </div>
-  );
+  return <Jumbotron className='mx-auto jumbo-size'>{displayTweet}</Jumbotron>;
 };
 
 export default RandomTweet;

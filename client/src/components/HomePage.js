@@ -1,11 +1,10 @@
 import React from 'react';
-import { Button, Card, Form, FormControl } from 'react-bootstrap';
-import logo from '../images/explore.jpg';
+import { Button, Card, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import './Homepage.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Homepage = () => {
   const [isChecked, setIsChecked] = useState(false);

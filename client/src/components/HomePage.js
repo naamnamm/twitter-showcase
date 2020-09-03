@@ -15,7 +15,7 @@ const Homepage = () => {
 
   const displayMsg =
     isChecked === true ? (
-      <span className='ml-3 text-danger'>Awesome!</span>
+      <span className='ml-3 text-danger'>Awesome!!</span>
     ) : null;
 
   return (

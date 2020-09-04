@@ -67,44 +67,50 @@ const RandomTweet = ({ q }) => {
   const formatNumber = (num) =>
     num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-  const displayTweet = randomTweet.map((tweet) => (
-    <div key={Date.now()} className='d-flex main-tweet-container mx-auto'>
-      <Image
-        src={tweet.user.profile_image_url}
-        className='rounded-sm user-logo mr-1'
-        roundedCircle
-      />
-      <Card className='p-1'>
-        <div className='text-left'>
-          <a
-            href={`https://twitter.com/${tweet.user.screen_name}`}
-            className='font-weight-bold text-decoration-none text-dark'
-          >
-            {tweet.user.name}
-          </a>
-          <span className='text-muted ml-1'>@{tweet.user.screen_name}</span>
-        </div>
-
-        <div className='text-left'>{formatStr(tweet.full_text)}</div>
-
-        <div className='buttons-container d-flex'>
-          <div className='retweets-container d-flex mr-4'>
-            <div className='mr-2'>
-              <FontAwesomeIcon color='green' size='sm' icon={faRetweet} />
-            </div>
-            <div>{formatNumber(tweet.retweet_count)}</div>
+  const displayTweet = randomTweet.map((tweet) => {
+    const tweetData = tweet ? (
+      <div key={Date.now()} className='d-flex main-tweet-container mx-auto'>
+        <Image
+          src={tweet.user.profile_image_url}
+          className='rounded-sm user-logo mr-1'
+          roundedCircle
+        />
+        <Card className='p-1'>
+          <div className='text-left'>
+            <a
+              href={`https://twitter.com/${tweet.user.screen_name}`}
+              className='font-weight-bold text-decoration-none text-dark'
+            >
+              {tweet.user.name}
+            </a>
+            <span className='text-muted ml-1'>@{tweet.user.screen_name}</span>
           </div>
 
-          <div className='likes-container d-flex'>
-            <div className='mr-2'>
-              <FontAwesomeIcon color='red' size='sm' icon={faHeart} />
+          <div className='text-left'>{formatStr(tweet.full_text)}</div>
+
+          <div className='buttons-container d-flex'>
+            <div className='retweets-container d-flex mr-4'>
+              <div className='mr-2'>
+                <FontAwesomeIcon color='green' size='sm' icon={faRetweet} />
+              </div>
+              <div>{formatNumber(tweet.retweet_count)}</div>
             </div>
-            <div>{formatNumber(tweet.favorite_count)}</div>
+
+            <div className='likes-container d-flex'>
+              <div className='mr-2'>
+                <FontAwesomeIcon color='red' size='sm' icon={faHeart} />
+              </div>
+              <div>{formatNumber(tweet.favorite_count)}</div>
+            </div>
           </div>
-        </div>
-      </Card>
-    </div>
-  ));
+        </Card>
+      </div>
+    ) : (
+      'This user has not tweeted since last week, please choose other users.'
+    );
+
+    return tweetData;
+  });
 
   return <Jumbotron className='mx-auto jumbo-size'>{displayTweet}</Jumbotron>;
 };

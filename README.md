@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Twitter App
 
-## Available Scripts
+App built with React (frontend) and Express (backend) that pulls tweets data from [Twitter API](https://developer.twitter.com/en/docs).
 
-In the project directory, you can run:
+View Application on [Heroku](https://naamp-twitter-app.herokuapp.com/)
 
-### `npm start`
+<img src="https://user-images.githubusercontent.com/53867191/92256034-2704e900-eea1-11ea-8afb-93d8dd021d38.png" />
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src="https://user-images.githubusercontent.com/53867191/92256203-6c291b00-eea1-11ea-99b1-4334fd3ab7a5.png" />
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Summary
 
-### `npm test`
+This is my first full-stack application.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The frontend's main responsibility is to display a nice UI.
+- The backend's main responsibility is to communicate with External API and serve up a static file with its server. I set up a backend server using the Express framework.
 
-### `npm run build`
+On the frontend side, this is a static file/UI that allows users to search for tweets. Once the user inputs a search query, that query string gets sent to the backend.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+On the backend side, once it gets a query string from the frontend, it then sends a request to the external API and it then received tweet data back from the external API.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Finally, with internal API, the front end grabs the ready-to-display tweet data from the backend to display it.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Key Takeaways: It's interesting to see the segregation of duties of each part of the applications. I also get to play around debugging tools on VScode which is pretty interesting. Finally, I get to build and understand the whole full-stack process which is awesome!. :)
 
-### `npm run eject`
+## Built With
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Environment - [NodeJs](https://nodejs.org/en/)
+- Frontend - [ReactJs](https://reactjs.org/) + [Bootstrap](https://getbootstrap.com/) & [Reactstrap](https://reactstrap.github.io/)
+- Backend - [ExpressJs](https://expressjs.com/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [Heroku](https://www.heroku.com)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Author
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Naam Pondpat - _Full Stack Software Developer_ - [LinkedIn](https://www.linkedin.com/in/naam-pondpat-638153150/)

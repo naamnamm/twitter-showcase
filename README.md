@@ -29,6 +29,13 @@ Key Takeaways: It's interesting to see the segregation of duties of each part of
 - Frontend - [ReactJs](https://reactjs.org/) + [Bootstrap](https://getbootstrap.com/) & [Reactstrap](https://reactstrap.github.io/)
 - Backend - [ExpressJs](https://expressjs.com/)
 
+## Installation
+1. Run `npm install` in root folder
+2. Run `npm install --prefix client` in root folder
+3. Run `npm run dev` to start the server
+4. Open browser at `http://localhost:5000`
+
+
 ## Deployment
 
 - [Heroku](https://www.heroku.com)

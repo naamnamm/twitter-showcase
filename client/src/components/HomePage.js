@@ -22,30 +22,18 @@ const Homepage = () => {
     <div className='card-container'>
       <Card>
         <Card.Header className='font-weight-bold text-muted'>
-          Log in to Twitter
+          Daily Dose of Fun tweets
         </Card.Header>
         <Card.Body>
           <Card.Title className='mt-1 mb-4'>
             <FontAwesomeIcon color='skyblue' size='2x' icon={faTwitter} />
           </Card.Title>
 
-          <Form.Control
-            type='email'
-            placeholder='Phone, email or username'
-            className='w-75 mx-auto my-3'
-            readOnly
-          />
-          <Form.Control
-            type='password'
-            placeholder='Password'
-            className='w-75 mx-auto my-3'
-            readOnly
-          />
 
           <Form inline className='w-75 mx-auto my-3'>
             <Form.Check
               type='checkbox'
-              label='Ready to search for tweets?'
+              label='Ready for some tweets?'
               className='text-muted'
               onChange={handleChange}
             />

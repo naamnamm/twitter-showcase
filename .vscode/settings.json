@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/f7df824e-bff8-4250-81b0-b7cc885cef0a/resourceGroups/FreeWebApp/providers/Microsoft.Web/sites/naamp-twitter-app",
+    "appService.deploySubpath": "."
+}

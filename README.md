@@ -4,7 +4,7 @@ App built with React (frontend) and Express (backend) that pulls tweets data fro
 
 View Application on [Heroku](https://naamp-twitter-app.herokuapp.com/)
 
-<img src="https://user-images.githubusercontent.com/53867191/92256034-2704e900-eea1-11ea-8afb-93d8dd021d38.png" />
+<img src="https://user-images.githubusercontent.com/53867191/222491102-232ec168-6e65-4d9b-ab5d-da7d90ede8f8.png" />
 
 <img src="https://user-images.githubusercontent.com/53867191/92256203-6c291b00-eea1-11ea-99b1-4334fd3ab7a5.png" />
 

@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\client\\src",
+    "\\client\\src\\components"
   ],
-  "SelectedNode": "\\C:\\Users\\naamp\\Source\\Repos\\naamnamm\\twitter-showcase",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

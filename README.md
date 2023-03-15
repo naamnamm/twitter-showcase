@@ -2,7 +2,7 @@
 
 App built with React (frontend) and Express (backend) that pulls tweets data from [Twitter API](https://developer.twitter.com/en/docs).
 
-View Application on [Heroku](https://naamp-twitter-app.herokuapp.com/)
+View Application on [Heroku](https://naampt-twitter-app.herokuapp.com/)
 
 <img src="https://user-images.githubusercontent.com/53867191/222491102-232ec168-6e65-4d9b-ab5d-da7d90ede8f8.png" />
 
